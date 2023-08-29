@@ -17,7 +17,11 @@ if [ -f "$HOME/.condarc" ] ; then
 	mv "$HOME/.condarc" "$HOME/.condarc.backup$(date '+%Y%m%dT%H%M%S')"
 fi
 echo "... copying files ..."
-rsync -rav '$HOME/' "$HOME/"
+
+# WARNING: DO NOT RUN `rsync -rav '$HOME/' "$HOME/"` (it breaks SSH)
+mkdir -p "$HOME/.local"
+rsync -rav '$HOME/.local' "$HOME/.local"
+# done
 source "$HOME/.bash_profile"
 echo "...Done installing home directory customizations"
 
