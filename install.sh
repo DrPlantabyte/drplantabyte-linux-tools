@@ -18,9 +18,9 @@ if [ -f "$HOME/.condarc" ] ; then
 fi
 echo "... copying files ..."
 
-# WARNING: DO NOT RUN `rsync -rav '$HOME/' "$HOME/"` (it breaks SSH)
-mkdir -p "$HOME/.local"
-rsync -rav '$HOME/.local' "$HOME/.local"
+# WARNING: `rsync -rav '$HOME/' "$HOME/"` it breaks SSH
+rsync -rav '$HOME/' "$HOME/" || chmod 750 "$HOME"
+chmod 750 "$HOME"
 # done
 source "$HOME/.bash_profile"
 echo "...Done installing home directory customizations"
