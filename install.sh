@@ -8,13 +8,16 @@ if [ -f "$HOME/.bash_profile" ] ; then
 	mv "$HOME/.bash_profile" "$HOME/.bash_profile.backup$(date '+%Y%m%dT%H%M%S')"
 fi
 if [ -f "$HOME/.bashrc" ] ; then
-	mv "$HOME/.bashrc" "$HOME/.bashrc.backup$(date '+%Y%m%dT%H%M%S')"
+	mv "$HOME/.bashrc" "$HOME/.bashrc.$(date '+%Y%m%dT%H%M%S').backup"
 fi
 if [ -f "$HOME/.profile" ] ; then
-	mv "$HOME/.profile" "$HOME/.profile.backup$(date '+%Y%m%dT%H%M%S')"
+	mv "$HOME/.profile" "$HOME/.profile.$(date '+%Y%m%dT%H%M%S').backup"
 fi
 if [ -f "$HOME/.condarc" ] ; then
-	mv "$HOME/.condarc" "$HOME/.condarc.backup$(date '+%Y%m%dT%H%M%S')"
+	mv "$HOME/.condarc" "$HOME/.condarc.$(date '+%Y%m%dT%H%M%S').backup"
+fi
+if [ -d "$HOME/.local/profile.d"] ; then
+	tar -czf "$HOME/.local_profile.d.$(date '+%Y%m%dT%H%M%S').backup.tar.gz" "$HOME/.local/profile.d"
 fi
 echo "... copying files ..."
 
