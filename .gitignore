@@ -1,0 +1,8 @@
+# IDE files
+.geany
+.idea
+
+# python artifacts
+__pycache__
+**/__pycache__
+
