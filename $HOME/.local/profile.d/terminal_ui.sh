@@ -16,9 +16,9 @@ case "$TERM" in
 esac
 
 if [ "$color_prompt" = yes ]; then
-	export PS1="\[\033[00;35m\]\D{%Y-%m-%dT%H:%M:%S%z}\[\033[00m\] \[\033[01;32m\]\u@\H:\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\n\[\033[00;36m\]"'$(if [ -n "$CONDA_DEFAULT_ENV" ] ; then echo "(conda:$(basename "$CONDA_DEFAULT_ENV"))" ; fi)'"\[\033[00m\]\$ "
+	export PS1="\[\033[00;35m\]\D{%Y-%m-%dT%H:%M:%S%z}\[\033[00m\] \[\033[01;32m\]\u@\H:\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\n\[\033[00;36m\]"'$(if [ -n "$CONDA_DEFAULT_ENV" ] ; then echo "(conda:$(basename "$CONDA_DEFAULT_ENV"))" ; fi)'"\[\033[00;33m\]"'$(if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ] ; then echo "(git:$(git rev-parse --abbrev-ref HEAD 2>/dev/null))"; fi)$(if [ -n "$(hg branch 2>/dev/null)" ] ; then echo "(hg:$(hg branch 2>/dev/null))"; fi)'"\[\033[00m\]\$ "
 else
-	export PS1="[\D{%Y-%m-%dT%H:%M:%S%z}] \u@\H:\w\n"'$(if [ -n "$CONDA_DEFAULT_ENV" ] ; then echo "(conda:$(basename "$CONDA_DEFAULT_ENV"))" ; fi)'"\$ "
+	export PS1="[\D{%Y-%m-%dT%H:%M:%S%z}] \u@\H:\w\n"'$(if [ -n "$CONDA_DEFAULT_ENV" ] ; then echo "(conda:$(basename "$CONDA_DEFAULT_ENV"))" ; fi)$(if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ] ; then echo "(git:$(git rev-parse --abbrev-ref HEAD 2>/dev/null))"; fi)$(if [ -n "$(hg branch 2>/dev/null)" ] ; then echo "(hg:$(hg branch 2>/dev/null))"; fi)'"\$ "
 fi
 unset color_prompt
 
