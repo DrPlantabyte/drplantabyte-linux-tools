@@ -8,5 +8,8 @@
 # code, and `stty <hex code>` to load complete stty settings
 # Note: binding anything to ^I breaks tab completion, reason unknown
 
-stty intr ^X lnext ^L
-
+if [ ! -z $(echo "$-" | grep -o i) ]
+then
+# interactive shells only
+	stty intr ^X lnext ^L
+fi
