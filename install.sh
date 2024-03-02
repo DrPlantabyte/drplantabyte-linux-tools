@@ -16,6 +16,9 @@ fi
 if [ -f "$HOME/.condarc" ] ; then
 	mv "$HOME/.condarc" "$HOME/.condarc.$(date '+%Y%m%dT%H%M%S').backup"
 fi
+if [ -f "$HOME/.vimrc" ] ; then
+	mv "$HOME/.vimrc" "$HOME/.vimrc.$(date '+%Y%m%dT%H%M%S').backup"
+fi
 if [ -d "$HOME/.local/profile.d"] ; then
 	tar -czf "$HOME/.local_profile.d.$(date '+%Y%m%dT%H%M%S').backup.tar.gz" "$HOME/.local/profile.d"
 fi
